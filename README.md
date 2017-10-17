@@ -1,6 +1,10 @@
 # -TensorFlow-
 第一本书：Getting Started with TensorFlow
 
+source tensorflow/bin/activate   
+
+(source) deactivate
+
 使用的是virtualenv来运行TensorFlow
 
 1,安装virtualenv：
