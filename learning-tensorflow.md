@@ -1,5 +1,7 @@
-#一些感觉有用的东西
+# 一些感觉有用的东西
 
 1，In deep learning, we feed millions of data instances into a network of neurons, teaching them to recognize patterns from raw inputs. The deep neural networks take raw inputs (such as pixel values in an image) and transform them into useful representations, extracting higher-level features (such as shapes and edges in images) that capture complex concepts by combining smaller and smaller pieces of information to solve challenging tasks such as image classification.The networks automatically learn to build abstract representations by adapting and correcting themselves fitting patterns observed in the data. The ability to automatically construct data representations is a key advantage of deep neural nets over conventional machine learning, which typically requires domain expertise and manual feature engineering before any “learning” can occur.
 
 2,Deep neural networks, as the term and the illustrations we’ve shown imply, are all about networks of neurons, with each neuron learning to do its own operation as part of a larger picture. Data such as images enters this network as input, and flows through the network as it adapts itself at training time or predicts outputs in a deployed system.
+
+3,Tensors are the standard way of representing data in deep learning. Simply put, tensors are just multidimensional arrays, an extension of two-dimensional tables (matrices) to data with higher dimensionality. Just as a black-and-white (grayscale) images are represented as “tables” of pixel values, RGB images are represented as tensors(three-dimensional arrays), with each pixel having three values corresponding to red, green, and blue components.
