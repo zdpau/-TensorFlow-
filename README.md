@@ -29,7 +29,7 @@ $ source ~/tensorflow/bin/activate.csh  # If using csh or tcsh
 4，退出:(source) deactivate 
 
 ## tf.app.flags
-tf.app.flags is a wrapper for the Python argparse module, which is commonly used to process command-line arguments, with some extra and specific functionality.
+tf.app.flags is a wrapper for the Python argparse module, which is commonly used to process command-line arguments, with some extra and specific functionality.  tf.app.flags是一个Python argparse模块封装，这是常用的处理命令行参数，与一些额外的特定功能。
 
 for instance, a Python command-line program with typical command-line arguments:
 
@@ -40,4 +40,8 @@ The program distribute.py is passed the following:  job_name="ps"   task_index=0
 This information is then extracted within the Python script, by using:
 
    `tf.app.flags.DEFINE_string("job_name", "", "name of job")`
+   
    `tf.app.flags.DEFINE_integer("task_index", 0, "Index of task")`
+
+tf.app.flags.flags是一个结构，包含所有参数解析从命令行输入的值。
+
