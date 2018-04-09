@@ -39,5 +39,5 @@ The program distribute.py is passed the following:  job_name="ps"   task_index=0
 
 This information is then extracted within the Python script, by using:
 
-   `tf.app.flags.DEFINE_string("job_name", "", "name of job")
-    tf.app.flags.DEFINE_integer("task_index", 0, "Index of task")`
+   `tf.app.flags.DEFINE_string("job_name", "", "name of job")`
+   `tf.app.flags.DEFINE_integer("task_index", 0, "Index of task")`
