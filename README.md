@@ -27,3 +27,9 @@ $ source ~/tensorflow/bin/activate      # If using bash, sh, ksh, or zsh
 $ source ~/tensorflow/bin/activate.csh  # If using csh or tcsh 
 
 4，退出:(source) deactivate 
+
+## tf.app.flags
+tf.app.flags is a wrapper for the Python argparse module, which is commonly used to process command-line arguments, with some extra and specific functionality.
+
+for instance, a Python command-line program with typical command-line arguments:
+   `python distribute.py --job_name="ps" --task_index=0`
