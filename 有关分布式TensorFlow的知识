@@ -1,1 +1,12 @@
+1， The tf.train.Server.create_local_server() method 使用进程内服务器创建单进程群集。(creates a single-process cluster, with an in-process server).
 
+2， TensorFlow“集群”是一组参与TensorFlow图形分布式执行的“任务”。每个任务都与一个TensorFlow“服务器”相关联，该服务器包含一个可用于创建会话的“master”和一个在图中执行操作的“worker”。一个集群也可以分成一个或多个“作业”，每个作业包含一个或多个任务。
+
+(A TensorFlow "cluster" is a set of "tasks" that participate in the distributed execution of a TensorFlow graph. Each task is associated with a TensorFlow "server", which contains a "master" that can be used to create sessions, and a "worker" that executes operations in the graph. A cluster can also be divided into one or more "jobs", where each job contains one or more tasks.)
+
+3,
+
+
+
+
+参考文献：https://www.tensorflow.org/deploy/distributed
