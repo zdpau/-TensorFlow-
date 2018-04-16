@@ -18,8 +18,8 @@
 ### 4，Replicated training
 #### 1，“数据并行性”(一种常用的训练配置)：worker job中的多个task，在不同的小批量数据上训练相同的模型，更新托管在ps job中的一个或多个任务中的共享参数。所有tasks通常运行在不同的机器上。在TensorFlow中有很多方法可以指定这个结构，我们正在构建库，以简化指定复制模型的工作。可能的方法包括：
 ##### 1, 图内复制（In-graph replication）：在这种方法中，客户端构建一个包含一组参数的tf.Graph（在tf.Variable节点中固定为/ job：ps）;以及模型的计算密集型部分的多个副本，每个副本都固定在/ job：worker中的不同任务。
-##### 2，图间复制（Between-graph replication）：
-
-
+##### 2，图间复制（Between-graph replication）：对于每一个/job:worker task都有一个独立的客户端，通常与worker task处于相同的进程中,每个client构建一个包含参数的类似图(固定到/ job：ps像以前一样使用tf.train.replica_device_setter将它们确定性地映射到相同的任务)以及模型的计算密集型部分的单个副本，固定到/ job：worker中的本地任务。
+##### 3，异步训练：在这种方法中，图的每个副本都有独立的训练循环that无需协调即可执行。它与以上两种复制形式兼容。
+##### 4，同步训练：在此方法中，所有副本都读取当前参数的相同值，并行计算梯度，然后将它们应用到一起。它与图内复制（例如使用CIFAR-10多GPU训练器中的梯度平均）和图间复制兼容（例如使用tf.train.SyncReplicasOptimizer）。
 
 参考文献：1，https://www.tensorflow.org/deploy/distributed
