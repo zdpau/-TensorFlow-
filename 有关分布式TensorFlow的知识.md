@@ -29,5 +29,22 @@ TensorFlow一般将任务分为两类job：一类叫参数服务器，parameter 
 
 首先来理解一下参数服务器的概念。一般而言，机器学习的参数训练过程可以划分为两个类别：第一个是根据参数算算梯度，第二个是根据梯度更新参数。对于小规模训练，数据量不大，参数数量不多，一个CPU就足够了，两类任务都交给一个CPU来做。对于普通的中等规模的训练，数据量比较大，参数数量不多，计算梯度的任务负荷较重，参数更新的任务负荷较轻，所以将第一类任务交给若干个CPU或GPU去做，第二类任务交给一个CPU即可。对于超大规模的训练，数据量大、参数多，不仅计算梯度的任务要部署到多个CPU或GPU上，而且更新参数的任务也要部署到多个CPU。如果计算量足够大，一台机器能搭载的CPU和GPU数量有限，就需要多台机器来进行计算能力的扩展了。参数服务器是一套分布式存储，用于保存参数，并提供参数更新的操作。
 
+## 3, glossary(词汇表)
+1，client:client通常是一个构建TensorFlow图并构造tensorflow :: Session以与集群进行交互的程序。client通常使用Python或C++编写。单个客户端进程可以直接与多台TensorFlow服务器交互（请参阅上面的“复制式培训”），并且单台服务器可以为多个客户端提供服务。
+
+2, cluster: TensorFlow集群包含一个或多个“作业(jobs)”，每个“作业”分为一个或多个“任务(tasks)”列表。cluster通常专用于特定的高级目标(high-level objective)，例如训练神经网络，并行使用多台机器。cluster由tf.train.ClusterSpec对象定义。
+
+3, job: 一份工作(job)包括一份“任务(task)”清单，通常用于共同目的。例如，名为ps的作业（用于“参数服务器”）通常承载存储和更新变量的节点;而名为Worker的作业通常承载执行计算密集型任务的无状态节点。作业中的任务(the tasks in a job)通常运行在不同的机器上。这组工作角色是灵活的：例如，worker可能会保持某种状态。
+
+4, Master service: RPC service提供对一组分布式设备的远程访问，并充当会话目标。master service实现tensorflow :: Session接口，并负责协调跨一个或多个“worker services”的工作。所有TensorFlow服务器均实施主服务(All TensorFlow servers implement the master service)。
+
+5, task:任务对应于特定的TensorFlow服务器，并且通常对应于单个进程。任务属于特定的“工作（job）”，并通过其在该工作任务列表中的索引来标识。
+
+6，TensorFlow server: 运行tf.train.Server实例的进程，该实例是集群的成员，并导出“主服务”和“worer service”。
+
+7, worker service: 使用本地设备执行TensorFlow图形部分的RPC服务。一个worker service实现worker_service.proto。所有的TensorFlow服务器都实现了工作服务。(All TensorFlow servers implement the worker service.)
+
+
+
 参考文献：1，https://www.tensorflow.org/deploy/distributed
         2, https://segmentfault.com/a/1190000008376957?from=timeline&isappinstalled=1
