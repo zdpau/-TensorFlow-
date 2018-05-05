@@ -11,5 +11,9 @@
 #### 综上：卷积层计算量大，所需参数系数 W 少，全连接层计算量小，所需参数系数 W 多。因此对于卷积层适合使用数据并行，对于全连接层适合使用模型并行。
 
 ## 二，分布式TensorFlow的理解：
-### https://zhuanlan.zhihu.com/p/35083779（分布式TensorFlow入门教程）
-### 
+### https://zhuanlan.zhihu.com/p/35083779 分布式TensorFlow入门教程）这篇比较重要，教的比较详细，有关数据模型并行，ASGD，SGD，stale gradient都讲了
+### https://www.oreilly.com/ideas/distributed-tensorflow （这篇基本包含上面那一篇，不过是英文版，比较重要）
+### https://blog.csdn.net/u012436149/article/details/53140869 （这篇讲得比较详细，需要再看）
+### https://www.jianshu.com/p/bf17ac9e6357 （简书，可以借鉴一下）
+### https://www.tensorflow.org/extend/architecture#code （当初PPT内容）
+### https://www.tensorflow.org/deploy/distributed
