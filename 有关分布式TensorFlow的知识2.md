@@ -14,6 +14,7 @@
 ### https://zhuanlan.zhihu.com/p/35083779 分布式TensorFlow入门教程）这篇比较重要，教的比较详细，有关数据模型并行，ASGD，SGD，stale gradient都讲了
 ### https://www.oreilly.com/ideas/distributed-tensorflow （这篇基本包含上面那一篇，不过是英文版，比较重要）
 ### https://blog.csdn.net/u012436149/article/details/53140869 （这篇讲得比较详细，需要再看）
+### https://blog.csdn.net/luodongri/article/details/52596780 (讲的听通俗易懂的)
 ### https://www.jianshu.com/p/bf17ac9e6357 （简书，可以借鉴一下）
 ### https://www.tensorflow.org/extend/architecture#code （当初PPT内容）
 ### https://www.tensorflow.org/deploy/distributed
