@@ -21,8 +21,36 @@ name_scope 作用于操作，variable_scope 可以通过设置reuse 标志以及
 
 ## 4. 有关tf.shape, tensor.get_shape的用法（https://blog.csdn.net/jinlong_xu/article/details/71405305）
 首先两种方法都可以获得变量的shape，不同点在于：
+
 1，get_shape()不需要放在Session中即可运行；tf.shape不行。
 2，只有tensor有这个方法tensor.get_shape()， 返回是一个tuple；tf.shape(x)其中x可以是tensor，也可不是tensor，类型可以是tensor, list, array，返回是一个tensor.
+```
+import tensorflow as tf
+import numpy as np
+
+x = tf.constant([[1,2,3],[4,5,6]])
+y = [[1,2,3],[4,5,6]]
+z = np.arange(24).reshape(2,3,4)
+
+sess=tf.Session()
+x_shape = tf.shape(x)
+y_shape = tf.shape(y)
+z_shape = tf.shape(z)
+print sess.run(x_shape) # output:[2,3]
+print sess.run(y_shape) # output:[2,3]
+print sess.run(z_shape) # output:[2,3,4]
+```
+```
+import tensorflow as tf
+import numpy as np
+
+x = tf.constant([[1,2,3],[4,5,6]])
+y = [[1,2,3],[4,5,6]]
+z = np.arange(24).reshape(2,3,4)
+
+x_shape = x.get_shape() # 输出（2，3），注意是圆括号。还要注意是x.get_shape(这里没参数)
+z_shape = z.get_shape() #这种就出错了，因为只能是Tensor数据类型才能使用这个方法。
+```
 **我们经常会这样来feed数据,如果在运行的时候想知道None到底是多少,这时候,只能通过tf.shape(x)[0]这种方式来获得.**
 
 
