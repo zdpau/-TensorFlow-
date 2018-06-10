@@ -55,5 +55,5 @@ z_shape = z.get_shape() #这种就出错了，因为只能是Tensor数据类型�
 
 
 ## 5，有关tf.argmax()以及axis解析的用法（https://blog.csdn.net/qq575379110/article/details/70538051/ https://blog.csdn.net/u012436149/article/details/52905166）
-
+简单地说tf.argmax就是返回最大的那个数值所在的下标。 
 
