@@ -73,3 +73,16 @@ a是Variable，而b是Tensor。
 >Variable是会显示分配内存空间的（既可以是内存，也可以是显存），需要初始化操作（assign一个tensor），由Session管理，可以进行存储、读取、更改等操作。相反地，诸如Const, Zeros等操作创造的Tensor，是记录在Graph中，所以没有单独的内存空间；而其他未知的由其他Tensor操作得来的Tensor则是只会在程序运行中间出现。
 
 >Tensor可以使用的地方，几乎都可以使用Variable。
+## 7,有关tf.app.flags的知识点(https://blog.csdn.net/lyc_yongcai/article/details/73456960)
+```
+tf.app.flags.DEFINE_string("param_name", "default_val", "description")  
+# 如果只写 python app_flags.py 则代码运行时默认程序里面设置的默认设置  
+
+# 若 python app_flags.py --train_data_path <绝对路径 train.txt> --max_sentence_len 100  
+#    --embedding_size 100 --learning_rate 0.05  代码再执行的时候将会按照上面的参数来运行程序  
+```
+```
+# 使用这种方式保证了，如果此文件被其他文件 import的时候，不会执行main 函数  
+if __name__ == '__main__':  
+    tf.app.run()   # 解析命令行参数，调用main 函数 main(sys.argv)
+```
