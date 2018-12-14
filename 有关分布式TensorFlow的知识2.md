@@ -12,6 +12,7 @@
 
 ## 二，分布式TensorFlow的理解：
 ### https://zhuanlan.zhihu.com/p/35083779 分布式TensorFlow入门教程）这篇比较重要，教的比较详细，有关数据模型并行，ASGD，SGD，stale gradient都讲了
+### https://blog.csdn.net/liulina603/article/details/80180355 （笔记上用的这篇）
 ### https://www.oreilly.com/ideas/distributed-tensorflow （这篇基本包含上面那一篇，不过是英文版，比较重要）
 ### https://blog.csdn.net/u012436149/article/details/53140869 （这篇讲得比较详细，需要再看）
 ### https://blog.csdn.net/luodongri/article/details/52596780 (讲的听通俗易懂的)
@@ -32,6 +33,9 @@
 
 
 ## 四，TensorFlow指定特定GPU以及占用显存的比例（使用某一块GPU, 多块, 禁用）
+
+### https://blog.csdn.net/liulina603/article/details/80180355 (这篇讲得好，包括分布式训练也讲了)
+
 ### https://blog.csdn.net/m0_37041325/article/details/77488981 
 
 ### https://blog.csdn.net/u014381600/article/details/72911262
@@ -78,7 +82,7 @@ sess = tf.Session(config=tf.ConfigProto(gpu_options=gpu_options))
 
 可以按照需要，设置不同的值，来分配显存。
 
-设置最小的GPU使用量,可能API已经变了
+设置最小的GPU使用量,使用 allow_growth，实现显存运行时分配。当allow_growth设置为True时，TF程序一开始被分配很少的显存，在运行时根据需求增长而扩大显存的占用。（可能API已经变了）
 ```
 config = tf.ConfigProto() 
 config.gpu_options.allow_growth = True 
